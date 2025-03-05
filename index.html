@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Web Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ01oR7pL9B8fY9xw3NV7UmdKfSE8syfbNfb1OM5FjvFAryPyFnCz6OZhFqz" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .navbar {
+            background-color: #333;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1.1rem;
+        }
+
+        .menubar a {
+            text-decoration: none;
+        }
+
+        .marquee {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #ff9900;
+        }
+
+        .card-container p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .icon-container {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #ff9900;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            color: #ff9900;
+        }
+
+        .nav-link:hover {
+            color: #ff9900 !important;
+        }
+
+        /* Add smooth hover effect to card */
+        .card-container:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar using Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Your Web Page</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="p1.html">About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Marquee -->
+    <div class="marquee text-center">
+        <marquee>Welcome to our stunning website! Explore and enjoy!</marquee>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="card-container">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-watch" viewBox="0 0 16 16">
+                            <path d="M8.5 5a.5.5 0 0 0-1 0v2.5H6a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5z"/>
+                            <path d="M5.667 16C4.747 16 4 15.254 4 14.333v-1.86A6 6 0 0 1 2 8c0-1.777.772-3.374 2-4.472V1.667C4 .747 4.746 0 5.667 0h4.666C11.253 0 12 .746 12 1.667v1.86a6 6 0 0 1 1.918 3.48.502.502 0 0 1 .582.493v1a.5.5 0 0 1-.582.493A6 6 0 0 1 12 12.473v1.86c0 .92-.746 1.667-1.667 1.667zM13 8A5 5 0 1 0 3 8a5 5 0 0 0 10 0"/>
+                        </svg>
+                    </div>
+                    <h1>Welcome!</h1>
+                    <p>This is my beautiful webpage. Enjoy exploring the features we have for you!</p>
+
+                    <div id="current-time" style="font-size: 1.5rem; font-weight: bold; margin-top: 20px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to update time -->
+    <script>
+        // Function to format the current date and time
+        function updateDateTime() {
+            const currentDate = new Date();
+            const hours = String(currentDate.getHours()).padStart(2, '0');
+            const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+            const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+            const day = String(currentDate.getDate()).padStart(2, '0');
+            const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            const year = currentDate.getFullYear();
+
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            const dateString = `${month}/${day}/${year}`;
+
+            document.getElementById('current-time').innerHTML = `${dateString} - ${timeString}`;
+        }
+
+        // Update time every second
+        setInterval(updateDateTime, 1000);
+
+        // Initial call to set the time immediately when the page loads
+        updateDateTime();
+    </script>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="inline.html" target="_blank">TimeTable</a> | 
+        <a href="p4.html" target="_blank">Result</a> | 
+        <a href="sitemap.html">Sitemap</a>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybA7fF2de1pR9pK2k9zvL9vYFfhZj3Jc5P6Y5bV5dFzv6qX9W" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8FqFjcJtXp5Zp6lwAb6l3MAwWiWo3T3pLkHJ+4MvfYb0yE" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
